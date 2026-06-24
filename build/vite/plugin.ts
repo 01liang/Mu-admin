@@ -3,9 +3,8 @@ import { themePreprocessorPlugin } from '@zougt/vite-plugin-theme-preprocessor'
 import { resolve } from 'path'
 import type { Plugin } from 'vite'
 import vitePluginImp from 'vite-plugin-imp'
-import { viteMockServe } from 'vite-plugin-mock'
 
-export function vitePlugins(VITE_USE_MOCK: boolean, isBuild: boolean) {
+export function vitePlugins() {
     const plugins: (Plugin | Plugin[])[] = []
 
     plugins.push(
@@ -40,7 +39,7 @@ export function vitePlugins(VITE_USE_MOCK: boolean, isBuild: boolean) {
                 themeLinkTagId: 'theme-link-tag',
                 // "head"||"head-prepend" || "body" ||"body-prepend"
                 themeLinkTagInjectTo: 'head',
-                // 是否对抽取的css文件内对应scopeName的权重类名移除
+                // 是否对抽取的主题css文件内对应scopeName的权重类名移除
                 removeCssScopeName: false,
                 // 可以自定义css文件名称的函数
                 customThemeCssFileName: (scopeName) => scopeName
@@ -51,21 +50,6 @@ export function vitePlugins(VITE_USE_MOCK: boolean, isBuild: boolean) {
     plugins.push(vitePluginImp({}))
 
     plugins.push(react())
-
-    VITE_USE_MOCK &&
-        plugins.push(
-            viteMockServe({
-                ignore: /^_/,
-                mockPath: 'src/mock',
-                localEnabled: !isBuild,
-                prodEnabled: isBuild,
-                injectFile: 'src/main.tsx',
-                injectCode: `
-                    import { setupProdMockServer } from './mock/index';
-                    setupProdMockServer();
-                `
-            })
-        )
 
     return plugins
 }

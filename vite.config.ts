@@ -37,7 +37,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
                 }
             }
         },
-        plugins: vitePlugins(VITE_USE_MOCK, isBuild),
+        plugins: vitePlugins(),
         base: isBuild ? '/Mu-admin/' : '/',
         build: {
             outDir: OUT_DIR,
