@@ -28,11 +28,16 @@ const App = (props: any) => {
     // 通过接口获取后台返回的路由
     const getMenu = async () => {
         setLoading(true)
-        await getMenuListAction()
-        const routers = store.getState().menu.menuList
-        useLazy(routers)
-        setRoutes([])
-        setLoading(false)
+        try {
+            await getMenuListAction()
+            const routers = store.getState().menu.menuList
+            useLazy(routers)
+            setRoutes([])
+        } catch (e) {
+            console.error('getMenu error:', e)
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
