@@ -36,9 +36,6 @@ React mu admin， 基于 `React18`,`TypeScript`,`vite4`,`antd4.x`等相关主流
 -   **多代理配置**：开发环境（development）配置多个本地代理
 -   **其他内置功能**：伸缩侧边栏、面包屑、全屏等
 
-## 📚 预览
-
--   [react-mu-admin](http://mu.haojiey.cn/) - 预览站点
 
 <p align="center">
     <img alt="MuAdmin Logo" width="100%" src="./src/assets/preview/preview1.png">
