@@ -1,0 +1,1 @@
+import{a as t,j as a}from"./index-994817eb.js";const m="/Mu-admin/assets/empty-ad38a5b0.svg",n=({description:s="暂无数据"})=>t("div",{id:"empty",children:[a("img",{src:m,alt:s}),a("span",{children:s})]});export{n as E};
